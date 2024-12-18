@@ -1,108 +1,98 @@
-import { useEffect, useState } from "react";
-import '../css/test.css'
+// Fakestore.tsx
+import React, { useEffect, useState } from 'react';
+import Select from './CategorySelect'; // Import the Select component
+import SearchBoxWithSuggestions from './SearchBox'; // Import the new SearchBox component
+import '../css/test.css';
 
+const Fakestore: React.FC = () => {
+  interface Product {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+  }
 
-export default function Fakestore() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>(''); // Selected category
+  const [searchTerm, setSearchTerm] = useState<string>(''); // Search term in input
+  const [loading, setLoading] = useState<boolean>(true);
 
-    interface Product {
-        id: number;
-        title: string;
-        price: number;
-        description: string;
-        category: string;
-        image: string;
-    }
+  useEffect(() => {
+    setLoading(true);
+    fetch('https://fakestoreapi.com/products/')
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
 
-    interface LightBoxProp{
-        image_:string
-    }
+  // Get unique categories from products
+  const categories = Array.from(new Set(products.map((product) => product.category)));
 
-    const [products, setproduct] = useState<Product[]>([]);
+  // Handle category change from search or dropdown
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
 
+  // Handle category selection from search suggestions
+  const handleCategorySelect = (category: string) => {
+    setSearchTerm(category); // Set the search term to the selected category
+    setSelectedCategory(category); // Set the selected category
+  };
 
-    const [image, setImageUrl] =  useState("");
+  // Filter products based on selected category
+  const filteredProducts = selectedCategory
+    ? products.filter((product) => product.category === selectedCategory)
+    : products;
 
-    const [close, setclose] = useState(false);
+  return (
+    <div className='m-5'>
+      {/* Search box with suggestions */}
+      <SearchBoxWithSuggestions
+        searchTerm={searchTerm}
+        categories={categories}
+        onSearchChange={handleSearchChange}
+        onCategorySelect={handleCategorySelect}
+      />
 
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products/").then(res => res.json()).then(data => setproduct(data)).catch(err => console.log(err))
-    }, []);
+      {/* Category Select component */}
+      <Select
+        options={categories}
+        selectedValue={selectedCategory}
+        onChange={(event) => setSelectedCategory(event.target.value)}
+        label="Select Category"
+        className="mb-5"
+      />
 
-    function clickme(image:string) {
-        setImageUrl(image);
-    }
-
-    function lightboxshow(image:string) {
-        setImageUrl(image);
-         setclose(true);
-    }
-    function handleclose(){
-         setclose(false)
-    }
-    return (
-        <>
-            <nav className="flex justify-end m-5 pr-5">
-
-                {/* 
-        <input  className=" search border rounded border-blue-300 focus:outline-none focus:ring focus:ring-blue-500 text-center" type="text" placeholder="Search by category" /> */}
-                <select className="w-40 border h-10 text-center cursor-pointer" name="category" id="category" onChange={(change) => console.log(change.target.value)}>
-                    <option value="category">Category</option>
-                    <option value="women's clothing">wemen's clothing</option>
-                    <option value="men's clothing">men's clothing</option>
-                </select>
-
-            </nav>
-
-            <div>
-                <LightBox image_={image} />
+      {/* Loading state rendering */}
+      {loading ? (
+        <div className="spinner-container">
+          <div className="spinner"></div> {/* Redesigned Spinner */}
+        </div>
+      ) : (
+        <div className="flex justify-evenly flex-wrap m-5">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="w-72 h-auto shadow rounded bg-white mb-2">
+              <div className="p-2">
+                <div className="flex justify-center h-52">
+                  <img className="w-40 cursor-pointer" src={product.image} alt={product.title} />
+                </div>
+                <h1 className="my-2 text-sm text-black text-center">{product.category}</h1>
+                <p className="my-2 text-bold text-xl text-orange-400">${product.price}</p>
+              </div>
             </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
-            <div className="flex justify-evenly flex-wrap m-5">
-                {
-                    products.map((product, index) => {
-                        return <>
-                            {Test()}
-                        </>
-
-                        function Test() {
-
-                            return <div className=" w-72 h-auto shadow rounded bg-white mb-2" key={index}>
-                                <div className="p-2 ">
-                                    <div className="flex justify-center h-52 ">
-                                        <img onClick={() => {
-                                            lightboxshow(product.image)
-                                        }} className="w-40 cursor-pointer" src={`${product.image}`} alt="alt" />
-                                    </div>
-                                    <h1 className="my-2 text-sm text-black text-center">{product.category}</h1>
-                                    <p className="my-2 text-bold text-xl text-orange-400">${product.price}</p>
-                                    <div className="flex gap-2"> <button onClick={() => {
-                                        clickme(product.image)
-                                    }} className="px-3 py-1 rounded w-full bg-slate-800 text-white ">Buy</button> </div>
-                                </div>
-                            </div>;
-                        }
-                    })
-                }
-
-            </div></>
-    )
-
-    function LightBox({image_}:LightBoxProp) {
-        return  <div>
-            {
-                close && <div className="light-box" id="light-box">
-                <main className="w-full" id="main">
-                     <div  className="close z-50"><img onClick={handleclose} className="w-10 flex cursor-pointer " src="/menue-close.svg" alt="" /></div>
-                    <div id="content" className="content">
-                        <div className="center">
-                            <img src={image_} alt= {image_} />
-                        </div>
-    
-                    </div>
-    
-                </main>
-            </div>
-            }
-        </div>;
-    }
-}
+export default Fakestore;

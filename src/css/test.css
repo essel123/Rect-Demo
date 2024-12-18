@@ -1,52 +1,149 @@
-#test{
+#test {
     margin: auto;
 }
 
-.main{
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%,-50%);
-   
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-
-.light-box{
+.light-box {
     display: flex;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7); /* Darker background for more contrast */
     z-index: 2000;
     padding: 10px;
-   
-   
+    opacity: 0;
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in/fade-out */
 }
 
-.content{
+.light-box.show {
+    opacity: 1;
+    visibility: visible; /* Make lightbox visible when 'show' class is applied */
+}
+
+.content {
     position: relative;
     top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.center{
-    width: 400px;
+
+.center {
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Max width to avoid excessive scaling */
     height: auto;
-    border: 2px solid orange;
+    border: 2px solid orange; /* Border around the image */
     margin: auto;
     overflow: hidden;
-    object-fit: cover;
+    object-fit: cover; /* Ensure the image covers the container without distortion */
 }
 
-.close{
+.close {
+    position: absolute;
+    top: 15px; /* Space from the top */
+    right: 15px; /* Space from the right */
+    z-index: 100;
+}
+
+.close img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close img:hover {
+    transform: scale(1.2); /* Add hover effect to close icon */
+}
+
+.search {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 500px;
+    display: block;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+    .center {
+        width: 90%; /* Slightly smaller width on smaller screens */
+        max-width: 400px; /* Cap width on mobile */
+    }
+
+    .search {
+        width: 100%; /* Full width search input */
+    }
+}
+/* test.css */
+.select-container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+select {
+    border: 2px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .center {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .search {
+        width: 100%;
+    }
+}
+
+/* Container for the spinner to center it on the screen */
+.spinner-container {
     display: flex;
-    justify-content: end;
-    align-items: end;
-    
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.search{
-    position: relative;
-    left: 10%;
-    width: 500px;
+/* Circular spinner animation */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 8px solid #f3f3f3; /* Light gray background */
+    border-top: 8px solid #ff6347; /* Tomato red color for the spinning part */
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite; /* Smooth rotation */
+}
+
+/* Keyframes for spinner animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
