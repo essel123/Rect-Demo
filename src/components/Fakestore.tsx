@@ -13,65 +13,34 @@ export default function Fakestore() {
         image: string;
     }
 
+    interface LightBoxProp{
+        image_:string
+    }
+
     const [products, setproduct] = useState<Product[]>([]);
 
+
+    const [image, setImageUrl] =  useState("");
+
+    const [close, setclose] = useState(false);
+
     useEffect(() => {
-
-
         fetch("https://fakestoreapi.com/products/").then(res => res.json()).then(data => setproduct(data)).catch(err => console.log(err))
     }, []);
 
     function clickme(image:string) {
-
-        alert(image);
+        setImageUrl(image);
     }
 
-    function lightboxshow() {
-
-        const lightbox = document.getElementById("light-box")
-
-        if (lightbox) {
-            lightbox.style.display = "flex"
-        }
-        // const content = document.getElementById("content")
-
-
-
-        const close = document.getElementById("close");
-
-        close?.addEventListener('click', () => {
-
-
-            alert("hi")
-        })
-
+    function lightboxshow(image:string) {
+        setImageUrl(image);
+         setclose(true);
     }
-
-
-
-    (function () {
-
-    })()
-
-
-
-
+    function handleclose(){
+         setclose(false)
+    }
     return (
         <>
-
-            <div className="light-box" id="light-box">
-                <main className="w-full" id="main">
-                    <div className="close"><img className="w-10 flex cursor-pointer " src="/menue-close.svg" alt="" /></div>
-                    <div id="content" className="content">
-                        <div className="center">
-                            <img alt="" />
-                        </div>
-
-                    </div>
-
-                </main>
-            </div>
-
             <nav className="flex justify-end m-5 pr-5">
 
                 {/* 
@@ -84,10 +53,11 @@ export default function Fakestore() {
 
             </nav>
 
+            <div>
+                <LightBox image_={image} />
+            </div>
+
             <div className="flex justify-evenly flex-wrap m-5">
-
-
-
                 {
                     products.map((product, index) => {
                         return <>
@@ -100,7 +70,7 @@ export default function Fakestore() {
                                 <div className="p-2 ">
                                     <div className="flex justify-center h-52 ">
                                         <img onClick={() => {
-                                            lightboxshow()
+                                            lightboxshow(product.image)
                                         }} className="w-40 cursor-pointer" src={`${product.image}`} alt="alt" />
                                     </div>
                                     <h1 className="my-2 text-sm text-black text-center">{product.category}</h1>
@@ -116,4 +86,23 @@ export default function Fakestore() {
 
             </div></>
     )
+
+    function LightBox({image_}:LightBoxProp) {
+        return  <div>
+            {
+                close && <div className="light-box" id="light-box">
+                <main className="w-full" id="main">
+                     <div  className="close z-50"><img onClick={handleclose} className="w-10 flex cursor-pointer " src="/menue-close.svg" alt="" /></div>
+                    <div id="content" className="content">
+                        <div className="center">
+                            <img src={image_} alt= {image_} />
+                        </div>
+    
+                    </div>
+    
+                </main>
+            </div>
+            }
+        </div>;
+    }
 }

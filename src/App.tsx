@@ -1,23 +1,19 @@
-
-
-import './App.css'
-import '../src/css/nav.css'
-import '../src/css/welcome.css'
-import  './css/test.css'
-import Portfolio from './components/Portfolio'
-
+import "./App.css";
+import "../src/css/nav.css";
+import "../src/css/welcome.css";
+import "./css/test.css";
+import Fakestore from "./components/Fakestore";
 
 function App() {
   return (
     <div>
-      {/* <Fakestore/> */}
+      <Fakestore />
       {/* <Form/> */}
-      <Portfolio/>
-      
+      {/* <Portfolio/> */}
+
       {/* <Contact/> */}
-      
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,29 +1,5 @@
 import '../css/test.css'
 
-
-
-// class Car {
-//   constructor(color,model){
-//     this.color =  color;
-    
-//     this.model = model
-//   }
-
-//   display(){
-//     console.log(`Model: ${this.model} Color: ${this.color}`)
-//   }
-
-// }
-
-
-
-
-
-// const car = new Car("BMW","Red");
-
-// car.display()
-
-
 function Review() {
   return (
 

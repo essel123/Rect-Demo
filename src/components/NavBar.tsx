@@ -2,7 +2,7 @@ import "../css/nav.css";
 
 function NavBar() {
   const navs = ["Home", "About", "Projects", "Contact"];
-  
+
   return (
     <div className="bg">
       <div className="nav">
@@ -13,7 +13,9 @@ function NavBar() {
                 className="text-md font-bold cursor-pointer hover:text-slate-700   "
                 key={id}
               >
-                <a href={`#${nav}`}>{nav}</a>
+                <a href={`#${nav}`}>
+                  {nav}
+                </a>
               </li>
             );
           })}
