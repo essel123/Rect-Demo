@@ -1,0 +1,50 @@
+#test{
+    margin: auto;
+}
+
+.main{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   
+}
+
+
+.light-box{
+    display: none;
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    padding: 10px;
+   
+   
+}
+
+.content{
+    position: relative;
+    top: 10%;
+}
+.center{
+    width: 400px;
+    height: 400px;
+    border: 1px solid orange;
+    margin: auto;
+}
+
+.close{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    
+}
+
+.search{
+    position: relative;
+    left: 10%;
+    width: 500px;
+}

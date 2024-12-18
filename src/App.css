@@ -1,0 +1,23 @@
+*{
+  scroll-behavior: smooth;
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 200;
+  background-color: rgb(255, 255, 255);
+ }
+
+ footer{
+  height: 70px !important;
+ }
+
+ @media (max-width:450px) {
+
+  footer{
+    height: 100px !important;
+   }
+  
+ }

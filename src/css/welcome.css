@@ -1,0 +1,87 @@
+
+
+.profile
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-learn{
+    color: #6a76ff;
+}
+h1{
+    font-family: 'PlaywriteGBS-VariableFont_wght.ttf';
+}
+h1 span{
+    font-size: 100px;
+   font-family: 'Lobster-Regular.ttf';
+   text-transform: uppercase;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 1px 4px 10px black;
+   
+    position: relative;
+}
+.address{
+   
+    text-align: center;
+    max-width: 700px;
+}
+
+.address p{
+    font-family: 'PlaywriteGBS-VariableFont_wght.ttf';
+    
+}
+
+
+@media (max-width:450px) {
+    /* .welcome{
+        display: none;
+    } */
+    h1 span{
+        font-size: 60px;
+    }
+    /* .profile
+{
+    display: flex;
+    flex-direction: column;
+    
+} */
+/* 
+.address{
+
+    
+    background: #fcfcfc;
+    max-width: 400px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    border-radius: 5px;
+    
+
+
+
+} */
+
+.address{
+    display: none;
+}
+    
+}
+
+
+@font-face {
+    font-family: "Lobster-Regular.ttf";
+    src: url('Lobster-Regular.ttf');
+}
+
+
+
+@font-face {
+    font-family: "PlaywriteGBS-VariableFont_wght.ttf";
+    src: url('/Playwrite_GB_S/PlaywriteGBS-VariableFont_wght.ttf');
+}
+
+
