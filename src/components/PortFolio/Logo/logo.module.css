@@ -1,0 +1,16 @@
+.logo{
+    cursor: pointer;
+    font-size: 30px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #e46400 0%, #f7d9b4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'kv2';
+   
+}
+
+
+@font-face {
+    font-family: 'kv2';
+    src: url(../public//K2D/K2D-Bold.ttf);
+}

@@ -40,7 +40,11 @@ function Portfolio() {
     }
 
     }
-    
+
+    function handleclick(){
+          menueclicked()
+    }
+ 
     
  
   
@@ -55,7 +59,7 @@ function Portfolio() {
    <div className=''>
 
    <div className="links" id='links'>
-   <NavBar/>
+   <NavBar onClick={()=>handleclick()}/>
    </div>
 
    <div className="menue">
@@ -77,7 +81,6 @@ function Portfolio() {
        <div id="About">
        <About/>
        </div>
-       
         <div id="Projects">
         <Projects/>
         </div>

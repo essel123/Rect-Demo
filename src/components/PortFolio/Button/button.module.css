@@ -1,0 +1,23 @@
+.btn {
+  border: none;
+  border-radius: 8px;
+  max-width: 200px;
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.filled {
+  background-color: #e46400;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.outlined {
+
+  background-color: transparent;
+  color: #959595;
+  border: 2px solid #959595;
+  transition: all 0.3s ease;
+}

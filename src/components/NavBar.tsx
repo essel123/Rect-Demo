@@ -1,6 +1,9 @@
 import "../css/nav.css";
 
-function NavBar() {
+interface NavBarProp {
+  onClick: () => void;
+}
+function NavBar({ onClick }: NavBarProp) {
   const navs = ["Home", "About", "Projects", "Contact"];
 
   return (
@@ -10,6 +13,7 @@ function NavBar() {
           {navs.map((nav, id) => {
             return (
               <li
+                onClick={onClick}
                 className="text-md font-bold cursor-pointer hover:text-slate-700   "
                 key={id}
               >

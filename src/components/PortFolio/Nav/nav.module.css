@@ -1,0 +1,87 @@
+.nav {
+  justify-content: space-between;
+  display: flex;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+}
+
+.nav ul li a {
+  color: #959595;
+  font-weight: bold;
+  font-family: 'lato';
+  font-size: 20px;
+}
+.menue {
+  display: none;
+}
+.openMenue {
+  display: none;
+}
+
+@font-face {
+  font-family: 'lato';
+  src: url('../public/Lato/Lato-Bold.ttf');
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+  }
+  .menue {
+    display: flex;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    z-index: 2000;
+  }
+
+  .openMenue {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    z-index: 2000;
+  }
+  .nav ul {
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: SlideIn 0.5s forwards;
+    height: 50vh !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .nav ul  li {
+    margin-top: 30px;
+  }
+}
+
+@keyframes SlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,75 @@
+/* Container for the loader */
+.volume-loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    z-index: 9999; /* Ensures the loader appears on top */
+  }
+  
+  /* The volume loader itself */
+  .volume-loader {
+    width: 200px;
+    height: 40px;
+    background: #ddd; /* Light gray background */
+    border-radius: 25px; /* Rounded corners */
+    position: relative;
+    overflow: hidden; /* Hide the overflowing part of the animated bar */
+  }
+  
+  /* The animated "volume bar" */
+  .volume-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Start with zero width */
+    height: 100%; /* Full height of the container */
+    background: #3498db; /* Blue color for the volume bar */
+    animation: volume-fill 1s ease-in-out infinite; /* Animation for filling and resetting */
+  }
+  
+  /* Keyframes for volume bar animation */
+  @keyframes volume-fill {
+    0% {
+      width: 0;
+    }
+    10% {
+      width: 10%;
+    }
+    20% {
+      width: 20%;
+    }
+    30% {
+      width: 30%;
+    }
+    40% {
+      width: 40%;
+    }
+    50% {
+      width: 50%;
+    }
+    60% {
+      width: 60%;
+    }
+    70% {
+      width: 70%;
+    }
+    80% {
+      width: 80%;
+    }
+    90% {
+      width: 90%;
+    }
+    95% {
+      width: 95%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  

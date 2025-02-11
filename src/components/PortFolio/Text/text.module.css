@@ -1,0 +1,63 @@
+.text{
+    font-family: 'latoextrabold';
+}
+.text-xl{
+    font-size: 1.5rem;
+}
+
+.text-2xl{
+    font-size: 2rem;
+}
+.text-3xl{
+    font-size: 3rem;
+}
+
+.text-4xl{
+    font-size: 4rem;
+}
+
+.text-5xl{
+    font-size: 5rem;
+}
+
+.text-6xl{
+    font-size: 6rem;
+}
+
+.text-7xl{
+    font-size: 7rem;
+}
+
+.text-8xl{
+    font-size: 8rem;
+}
+
+.text-9xl{
+    font-size: 9rem;
+}
+
+.text-10xl{
+    font-size: 10rem;
+}
+
+.light{
+    color: white;
+
+}
+
+.stale{
+    color: #DFDFDF;
+}
+
+.orange{
+    color: #FD6F00;
+    font-size: 24px;
+    font-family: 'latoextrabold';
+    font-weight: 800;
+}
+
+
+@font-face {
+    font-family: 'latoextrabold';
+    src: url(../../../../public/Lato/Lato-Regular.ttf);
+}

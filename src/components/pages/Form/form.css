@@ -1,0 +1,60 @@
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+}
+
+@media (max-width: 320px) {
+  .form {
+    margin-top: 100%;
+    overflow: hidden;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.form {
+  --webkit-box-shadow: -4px 10px 39px -21px rgba(0, 0, 0, 0.3);
+  --moz-box-shadow: -4px 10px 39px -21px rgba(0, 0, 0, 0.3);
+  box-shadow: -4px 10px 39px -21px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid grey;
+  background: transparent;
+  transition: border 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.details {
+  /* border: 1.5px solid red;
+    border-radius: 5px; */
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 2px;
+}
+
+select {
+  cursor: pointer;
+}
+
+option {
+  cursor: pointer;
+}
+label {
+  color: black;
+}
+
+input:focus {
+  border: 2px solid blue;
+}
