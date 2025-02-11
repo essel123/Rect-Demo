@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm} from "react-hook-form";
 
-import Loader from "../Loader";
 
 type Post = {
   userId: number;
@@ -54,7 +53,7 @@ function LandingPage() {
   }
   useEffect(() => {
     fetchFromDummyApi();
-  }, []);
+  }, [posts, loading]);
 
   return (
     <div className="w-full bg-gray-100 flex flex-col items-center justify-center">
